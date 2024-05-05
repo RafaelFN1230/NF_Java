@@ -1,7 +1,15 @@
+# Avaliação NF PBL: POO Java - Aplicação Web ou Mobile
+## UniRuy | Wyden
+## Disciplina:
+Programação Orientada a Objetos em Java 
+## Modelo da Aplicação
+Para o desenvolvimento do projeto, optei por criar uma aplicação web.
+# Conteúdos Primários
+## Introdução 
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started
-
+### Front-End
 First, run the development server:
 
 ```bash
@@ -13,24 +21,57 @@ pnpm dev
 # or
 bun dev
 ```
-
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### Back-End
+### Banco
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Objetivos da Aplicação 
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+## Funções/Lista de Eventos (Funcionalidades)
+### Especificação de Programas  
 
-## Learn More
+#### Layout da Tela; 
 
-To learn more about Next.js, take a look at the following resources:
+#### Regras de Negócio;  
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+#### Entidades Envolvidas (Classes) / Tabelas 
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+## Requisitos Funcionais (RF)
 
-## Deploy on Vercel
+## Requisitos Não Funcionais (RNF)
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## DER ou Diagrama de Classe 
+### Artefato gráfico 
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+### Dicionário de Dados (DD) 
+
+## Aplicação Protótipo
+- [Link do Protótipo](https://www.figma.com/proto/dOWl6RKNlHzCSTeBZznAiR/NF-Java-Poo?type=design&node-id=1-2&t=a9hDKo7UeQvHPcte-1&scaling=contain&page-id=0%3A1&starting-point-node-id=1%3A2&mode=design)
+
+### Menu/Submenu 
+
+### Telas Funcionais 
+
+### Telas de Diálogo 
+
+### Layout Relatórios 
+
+# Considerações Finais 
+
+Arquitetura:
+Arquitetura MVC
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
