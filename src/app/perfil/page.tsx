@@ -1,12 +1,12 @@
 "use client";
 
-import { Vagas } from "@/view/vagas";
+import Perfil from "@/view/perfil";
 
 export default function InvoicesPage() {
   return (
     <>
       <title>Dashboard </title>
-      <Vagas />
+      <Perfil />
     </>
   );
 }
