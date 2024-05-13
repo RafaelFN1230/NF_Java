@@ -1,0 +1,15 @@
+meta {
+  name: Lista de vagas
+  type: http
+  seq: 1
+}
+
+get {
+  url: http://localhost:8080/vagas?funcionario_id=1
+  body: multipartForm
+  auth: none
+}
+
+query {
+  funcionario_id: 1
+}

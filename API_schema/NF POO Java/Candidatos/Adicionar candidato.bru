@@ -1,0 +1,30 @@
+meta {
+  name: Adicionar candidato
+  type: http
+  seq: 1
+}
+
+post {
+  url: http://localhost:8080/vaga/{{jobOfferId}}/candidato
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+      "rg": "123457",
+      "nomeCandidato": "Fulano",
+      "email": "fulano@example.com"
+  }
+  
+}
+
+body:multipart-form {
+  nomeCandidato: Rafael
+  email: a@a.com
+  rg: 1444844717
+}
+
+vars:pre-request {
+  jobOfferId: 1
+}

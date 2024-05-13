@@ -1,0 +1,30 @@
+meta {
+  name: Cadastrar Vaga
+  type: http
+  seq: 3
+}
+
+post {
+  url: http://localhost:8080/cadastrarVaga?funcionario_id=2
+  body: json
+  auth: none
+}
+
+query {
+  funcionario_id: 2
+}
+
+body:json {
+  {
+    "nome": "Desenvolvedor Full Stack",
+    "descricao": "Desenvolvimento de aplicações web full stack utilizando Java e Spring Boot",
+    "salario": "7000.00"
+  }
+  
+}
+
+body:multipart-form {
+  nome: Desenvolvedor Full Stack
+  descricao: Desenvolvimento de aplicações web full stack utilizando Java e Spring Boot
+  salario: 7000.00
+}
