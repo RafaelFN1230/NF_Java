@@ -1,0 +1,26 @@
+meta {
+  name: Cadatrar Funcionarios
+  type: http
+  seq: 1
+}
+
+post {
+  url: http://localhost:8080/funcionario
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "nome": "Rafael",
+    "data": "15/05/2024",
+    "email": "a@a.com",
+    "senha": "ssaaa"
+  }
+}
+
+body:multipart-form {
+  nome: Rafae
+  data: 15/05/2024
+  email: a@a.com
+}
