@@ -3,7 +3,7 @@ export interface Data {
 }
 
 export interface Employee {
-  id: string;
+  id: number;
   nome: string;
   data: string;
   email: string;
@@ -12,7 +12,7 @@ export interface Employee {
 }
 
 export interface JobOffers {
-  id: string;
+  id: number;
   nome: string;
   descricao: string;
   salario: string;
@@ -20,8 +20,9 @@ export interface JobOffers {
 }
 
 export interface Candidatos {
-  id: string;
+  id: number;
   nomeCandidato: string;
   rg: string;
   email: string;
+  resumoCurriculo: string
 }
