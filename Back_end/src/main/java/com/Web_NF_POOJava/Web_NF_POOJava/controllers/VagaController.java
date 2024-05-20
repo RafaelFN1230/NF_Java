@@ -23,6 +23,8 @@ import com.Web_NF_POOJava.Web_NF_POOJava.repository.CandidatoRepository;
 import com.Web_NF_POOJava.Web_NF_POOJava.repository.FuncionarioRepository;
 import com.Web_NF_POOJava.Web_NF_POOJava.repository.VagaRepository;
 
+import java.util.Optional;
+
 import DTO.CandidatoDTO;
 import DTO.VagaDTO;
 
@@ -76,7 +78,7 @@ public class VagaController {
         for (Vaga vaga : vagasFuncionario) {
             List<CandidatoDTO> candidatosDTO = new ArrayList<>();
             for (Candidato candidato : vaga.getCandidatos()) {
-                CandidatoDTO candidatoDTO = new CandidatoDTO(candidato.getId(), candidato.getRg(), candidato.getNomeCandidato(), candidato.getEmail());
+                CandidatoDTO candidatoDTO = new CandidatoDTO(candidato.getId(), candidato.getRg(), candidato.getNomeCandidato(), candidato.getEmail(), candidato.getResumoCurriculo());
                 candidatosDTO.add(candidatoDTO);
             }
             VagaDTO vagaDTO = new VagaDTO(vaga.getId(), vaga.getNome(), vaga.getDescricao(), vaga.getSalario(), candidatosDTO);
@@ -94,7 +96,7 @@ public class VagaController {
         }
         List<CandidatoDTO> candidatosDTO = new ArrayList<>();
         for (Candidato candidato : vaga.getCandidatos()) {
-            CandidatoDTO candidatoDTO = new CandidatoDTO(candidato.getId(), candidato.getRg(), candidato.getNomeCandidato(), candidato.getEmail());
+            CandidatoDTO candidatoDTO = new CandidatoDTO(candidato.getId(), candidato.getRg(), candidato.getNomeCandidato(), candidato.getEmail(), candidato.getResumoCurriculo());
             candidatosDTO.add(candidatoDTO);
         }
         VagaDTO vagaDTO = new VagaDTO(vaga.getId(), vaga.getNome(), vaga.getDescricao(), vaga.getSalario(), candidatosDTO);
@@ -138,6 +140,34 @@ public class VagaController {
     }
 
     @CrossOrigin(origins = "http://localhost:3000")
+    @PutMapping("/{rg}")
+    public ResponseEntity<String> alterarCandidato(@PathVariable("rg") String rg, @Valid @RequestBody Candidato candidato, BindingResult result, RedirectAttributes attributes) {
+        if (result.hasErrors()) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Verifique os campos");
+        }
+
+        Optional<Candidato> optionalCandidato = Optional.ofNullable(cr.findByRg(rg));
+        if (!optionalCandidato.isPresent()) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Candidato não encontrado");
+        }
+
+        Candidato candidatoExistente = optionalCandidato.get();
+        candidatoExistente.setNomeCandidato(candidato.getNomeCandidato());
+        candidatoExistente.setEmail(candidato.getEmail());
+        candidatoExistente.setResumoCurriculo(candidato.getResumoCurriculo());
+        candidatoExistente.setRg(candidato.getRg());
+
+        if (candidato.getVaga() != null) {
+            Vaga vaga = candidato.getVaga();
+            candidatoExistente.setVaga(vaga);
+        }
+
+        cr.save(candidatoExistente);
+
+        return ResponseEntity.status(HttpStatus.OK).body("Candidato atualizado com sucesso");
+    }
+
+    @CrossOrigin(origins = "http://localhost:3000")
     @DeleteMapping("/vaga/{codigo}")
     public ResponseEntity<String> deletarVaga(@PathVariable("codigo") long codigo) {
         Vaga vaga = vr.findById(codigo);
@@ -149,8 +179,8 @@ public class VagaController {
     }
 
     @CrossOrigin(origins = "http://localhost:3000")
-    @DeleteMapping("/candidato")
-    public ResponseEntity<String> deletarCandidato(@RequestParam String rg) {
+    @DeleteMapping("/{rg}")
+    public ResponseEntity<String> deletarCandidato(@PathVariable("rg") String rg) {
         Candidato candidato = cr.findByRg(rg);
         if (candidato == null) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);

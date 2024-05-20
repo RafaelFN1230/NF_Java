@@ -5,12 +5,14 @@ public class CandidatoDTO {
     private String rg;
     private String nomeCandidato;
     private String email;
+    private String resumoCurriculo;
 
-    // Construtor
-    public CandidatoDTO(Long id, String rg, String nomeCandidato, String email) {
+    // Construtor 
+    public CandidatoDTO(Long id, String rg, String nomeCandidato, String email, String resumoCurriculo) {
         this.id = id;
         this.rg = rg;
         this.nomeCandidato = nomeCandidato;
+        this.resumoCurriculo = resumoCurriculo;
         this.email = email;
     }
     
@@ -36,6 +38,14 @@ public class CandidatoDTO {
 
     public void setNomeCandidato(String nomeCandidato) {
         this.nomeCandidato = nomeCandidato;
+    }
+    
+    public String getResumoCurriculo() {
+        return resumoCurriculo;
+    }
+
+    public void setResumoCurriculo(String resumoCurriculo) {
+        this.resumoCurriculo = resumoCurriculo;
     }
 
     public String getEmail() {

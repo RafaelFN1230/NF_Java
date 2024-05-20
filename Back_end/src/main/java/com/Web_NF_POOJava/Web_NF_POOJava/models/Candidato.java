@@ -23,6 +23,9 @@ public class Candidato {
 	private String nomeCandidato;
 	
 	@NotEmpty
+	private String resumoCurriculo;
+	
+	@NotEmpty
 	private String email;
 	
 	@ManyToOne
@@ -42,6 +45,14 @@ public class Candidato {
 
 	public void setRg(String rg) {
 		this.rg = rg;
+	}
+
+	public String getResumoCurriculo() {
+		return resumoCurriculo;
+	}
+
+	public void setResumoCurriculo(String resumoCurriculo) {
+		this.resumoCurriculo = resumoCurriculo;
 	}
 
 	public String getNomeCandidato() {
@@ -67,7 +78,5 @@ public class Candidato {
 	public void setVaga(Vaga vaga) {
 		this.vaga = vaga;
 	}
-	
-	
 
 }

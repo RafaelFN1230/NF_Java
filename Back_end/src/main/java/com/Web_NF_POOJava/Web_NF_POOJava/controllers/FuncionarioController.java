@@ -67,7 +67,7 @@ public class FuncionarioController {
                 List<CandidatoDTO> candidatosDTO = new ArrayList<>();
 
                 for (Candidato candidato : vaga.getCandidatos()) {
-                    CandidatoDTO candidatoDTO = new CandidatoDTO(candidato.getId(), candidato.getRg(), candidato.getNomeCandidato(), candidato.getEmail());
+                    CandidatoDTO candidatoDTO = new CandidatoDTO(candidato.getId(), candidato.getRg(), candidato.getNomeCandidato(), candidato.getEmail(), candidato.getResumoCurriculo());
                     candidatosDTO.add(candidatoDTO);
                 }
 
@@ -82,7 +82,7 @@ public class FuncionarioController {
         return ResponseEntity.ok(funcionariosDTO);
     }
 
-	// GET que lista dependentes e detalhes dos funcionário
+	// GET que lista detalhes funcionário
     @CrossOrigin(origins = "http://localhost:3000")
 	@GetMapping("/funcionario/{id}")
 	public ResponseEntity<FuncionarioDTO> detalhesFuncionarioComVagasECandidatos(@PathVariable("id") long id) {
@@ -97,7 +97,7 @@ public class FuncionarioController {
             List<CandidatoDTO> candidatosDTO = new ArrayList<>();
 
             for (Candidato candidato : vaga.getCandidatos()) {
-                CandidatoDTO candidatoDTO = new CandidatoDTO(candidato.getId(), candidato.getRg(), candidato.getNomeCandidato(), candidato.getEmail());
+                CandidatoDTO candidatoDTO = new CandidatoDTO(candidato.getId(), candidato.getRg(), candidato.getNomeCandidato(), candidato.getEmail(), candidato.getResumoCurriculo());
                 candidatosDTO.add(candidatoDTO);
             }
 
@@ -146,7 +146,6 @@ public class FuncionarioController {
             return new ResponseEntity<>("Funcionário não encontrado", HttpStatus.NOT_FOUND);
         }
         existingFuncionario.setNome(funcionario.getNome());
-        // Adicione outras propriedades que você deseja atualizar
         fr.save(existingFuncionario);
         return new ResponseEntity<>("Funcionário atualizado com sucesso!", HttpStatus.OK);
     }
