@@ -20,10 +20,16 @@ import {
 
 import * as React from "react";
 import CellInfo from "./card_body";
+import DashboardCardViewModel from "@/viewModel/DashboardCard.ViewModel";
+import { Employee } from "@/models/employee.model";
 
-export default function CardComponent() {
-  const vagasCadastradas = 10;
-  const candidatosCadastrados = 30;
+interface MainChartProps {
+  funcionarios: Employee[] | null
+}
+
+export default function CardComponent({ funcionarios }: MainChartProps) {
+  const { GetData } = DashboardCardViewModel();
+  const data = GetData(funcionarios)
 
   return (
     <>
@@ -34,10 +40,10 @@ export default function CardComponent() {
         <CardContent>
           <Table>
             <TableBody>
-              <CellInfo text={"Vagas Cadastradas:"} value={vagasCadastradas} />
+              <CellInfo text={"Vagas Cadastradas:"} value={data.n_vagas} />
               <CellInfo
                 text={"Candidatos Cadastrados:"}
-                value={candidatosCadastrados}
+                value={data.n_candidatos}
               />
             </TableBody>
           </Table>
