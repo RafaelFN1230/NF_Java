@@ -56,7 +56,7 @@ export default function PieChartComponent({ funcionarios }: MainChartProps) {
         Vagas com e sem candidatos
       </div>
       <div className="flex items-center justify-center max-h-72 ">
-      <Doughnut data={finalData} options={options}/>;
+      <Doughnut data={finalData} options={options}/>
       </div>
     </div>
   );
