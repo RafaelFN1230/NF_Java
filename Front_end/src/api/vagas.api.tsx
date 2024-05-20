@@ -2,21 +2,8 @@
 import axios from "axios";
 
 export default function VagasAPI() {
-  const DetalhesDaVaga = async (codigoVaga: string) => {
-    const options = {
-      method: "GET",
-      url: `http://localhost:8080/vaga/${codigoVaga}`,
-    };
-    try {
-      const { data } = await axios.request(options);
-      return data;
-    } catch (error) {
-      return error;
-    }
-  };
-
   const CadastrarVaga = async (
-    employeeId: string,
+    employeeId: number,
     jobOfferName: string,
     description: string,
     salary: string,
@@ -41,7 +28,7 @@ export default function VagasAPI() {
   };
 
   const EditarVaga = async (
-    jobOfferId: string,
+    jobOfferId: number,
     jobOfferName: string,
     description: string,
     salary: string,
@@ -60,7 +47,7 @@ export default function VagasAPI() {
     }
   };
 
-  const DeletarVaga = async (jobOfferId: string) => {
+  const DeletarVaga = async (jobOfferId: number) => {
     const options = {
       method: "DELETE",
       url: `http://localhost:8080/vaga/${jobOfferId}`,
@@ -74,22 +61,22 @@ export default function VagasAPI() {
     }
   };
 
-  const DetalhesVaga = async (jobOfferId: string) => {
+  const DetalhesVaga = async (jobOfferId: number) => {
     const options = {
       method: "GET",
       url: `http://localhost:8080/vaga/${jobOfferId}`,
     };
 
     try {
-      const { data } = await axios.request(options);
-      return data;
+      const data = await axios.request(options);
+      const requestData = data.data
+      return requestData;
     } catch (error) {
       return error;
     }
   };
 
   return {
-    DetalhesDaVaga,
     CadastrarVaga,
     EditarVaga,
     DeletarVaga,

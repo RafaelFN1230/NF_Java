@@ -1,8 +1,9 @@
 "use client";
+import { Employee } from "@/models/employee.model";
 import axios from "axios";
 
 export default function FuncionariosAPI() {
-  const ListaDeFuncionarios = async (codigoVaga: string) => {
+  const ListaDeFuncionarios = async () => {
     const options = {
       method: "GET",
       url: "http://localhost:8080/funcionarios",
@@ -80,7 +81,7 @@ export default function FuncionariosAPI() {
     }
   };
 
-  const DetalhesFuncionario = async (employeeId: string) => {
+  const DetalhesFuncionario = async (employeeId: number) => {
     const options = {
       method: "GET",
       url: `http://localhost:8080/funcionario/${employeeId}`,
