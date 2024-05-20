@@ -1,3 +1,5 @@
+import { Employee } from "@/models/employee.model";
+import MainDashboardChartViewModel from "@/viewModel/DashboardMainChart.ViewModel";
 import React, { PureComponent } from "react";
 import {
   ResponsiveContainer,
@@ -12,46 +14,14 @@ import {
   Legend,
 } from "recharts";
 
-const data = [
-  {
-    user: "Rafael",
-    vagasComCandidatos: 30,
-    vagasSemCandidatos: 8,
-    n_candidatos: 140,
-  },
-  {
-    user: "Heleno",
-    vagasComCandidatos: 68,
-    vagasSemCandidatos: 67,
-    n_candidatos: 150,
-  },
-  {
-    user: "Roney",
-    vagasComCandidatos: 13,
-    vagasSemCandidatos: 10,
-    n_candidatos: 29,
-  },
-  {
-    user: "David",
-    vagasComCandidatos: 14,
-    vagasSemCandidatos: 12,
-    n_candidatos: 28,
-  },
-  {
-    user: "Pedro",
-    vagasComCandidatos: 15,
-    vagasSemCandidatos: 8,
-    n_candidatos: 20,
-  },
-  {
-    user: "Claudio",
-    vagasComCandidatos: 14,
-    vagasSemCandidatos: 6,
-    n_candidatos: 17,
-  },
-];
+interface MainChartProps {
+  funcionarios: Employee[] | null
+}
 
-export default function MainChart() {
+export default function MainChart({ funcionarios }: MainChartProps) {
+  const { GetData } = MainDashboardChartViewModel();
+  const data = GetData(funcionarios)
+
   return (
     <div style={{ width: "100%", height: 300 }}>
       <ResponsiveContainer>
@@ -71,9 +41,9 @@ export default function MainChart() {
           <YAxis />
           <Tooltip />
           <Legend />
-          <Bar dataKey="vagasComCandidatos" barSize={20} fill="#4F46E5" />
-          <Bar dataKey="vagasSemCandidatos" barSize={20} fill="#ff7300" />
-          <Line type="monotone" dataKey="n_candidatos" stroke="#10B981" />
+          <Bar dataKey="vagasComCandidatos" barSize={20} fill="#4F46E5" name="Vagas com candidatos"/>
+          <Bar dataKey="vagasSemCandidatos" barSize={20} fill="#ff7300" name="Vagas sem candidatos"/>
+          <Line type="monotone" dataKey="n_candidatos" stroke="#10B981" name="Número total de candidatos"/>
         </ComposedChart>
       </ResponsiveContainer>
     </div>
