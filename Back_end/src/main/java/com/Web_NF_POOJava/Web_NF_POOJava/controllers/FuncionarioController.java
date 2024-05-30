@@ -3,7 +3,9 @@ package com.Web_NF_POOJava.Web_NF_POOJava.controllers;
 import jakarta.validation.Valid;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -34,14 +36,21 @@ public class FuncionarioController {
 	
     @CrossOrigin(origins = "http://localhost:3000")
 	@PostMapping("/login")
-	public ResponseEntity<String> login(@RequestParam("email") String email, @RequestParam("senha") String senha) {
-	    Funcionario funcionario = fr.findByEmailAndSenha(email, senha);
-	    if (funcionario != null) {
-	        return ResponseEntity.ok("Login realizado com sucesso!");
-	    } else {
-	        return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Usuário ou senha incorretos!");
-	    }
-	}
+	public ResponseEntity<Map<String, Object>> login(@RequestBody Map<String, String> loginData) {
+        String email = loginData.get("email");
+        String senha = loginData.get("senha");
+        Funcionario funcionario = fr.findByEmailAndSenha(email, senha);
+        Map<String, Object> response = new HashMap<>();
+        if (funcionario != null) {
+            response.put("message", "Login realizado com sucesso!");
+            response.put("id", funcionario.getId());
+            return ResponseEntity.ok(response);
+        } else {
+            response.put("message", "Usuário ou senha incorretos!");
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(response);
+        }
+    }
+
 	// POST que cadastra funcionários
     @CrossOrigin(origins = "http://localhost:3000")
 	@PostMapping("/funcionario")
