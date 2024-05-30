@@ -12,9 +12,10 @@ import {
   FormLabel,
   FormMessage,
 } from "../../components/ui/form";
+import { LoadingButton } from "../ui/loading.button";
 
 export function Login() {
-  const { handleClickForgotPassword, ProfileForm, errorMessage } =
+  const { ProfileForm, errorMessage, loading } =
     LoginViewModel();
 
   const { form, onSubmit } = ProfileForm();
@@ -66,20 +67,14 @@ export function Login() {
               )}
             />
           </div>
-          <div className="flex items-center justify-between">
-            <button
+          <div className="flex items-center justify-center">
+            <LoadingButton
               className="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
               type="submit"
+              loading={loading}
             >
               Entrar
-            </button>
-            <a
-              className="inline-block align-baseline font-bold text-sm text-blue-500 hover:text-blue-800"
-              href="#"
-              onClick={handleClickForgotPassword}
-            >
-              Esqueceu a Senha?
-            </a>
+            </LoadingButton>
           </div>
           <div className="w-full max-w-xs">
             {errorMessage && (
