@@ -42,56 +42,65 @@ export default function FuncionariosAPI() {
   };
 
   const EditarFuncionario = async (
-    employeeId: string,
+    employeeId: number | null,
     employeeName: string,
     startingDate: string,
+    senha: string,
     email: string,
-    password: string,
   ) => {
-    const options = {
-      method: "PUT",
-      url: `http://localhost:8080/funcionario/${employeeId}`,
-      data: {
-        nome: employeeName,
-        data: startingDate,
-        email: email,
-        senha: password,
-      },
-    };
+    if (employeeId !== null) {
+      const options = {
+        method: "PUT",
+        url: `http://localhost:8080/funcionario/${employeeId}`,
+        data: {
+          nome: employeeName,
+          data: startingDate,
+          email: email,
+          senha: senha,
+        },
+      };
 
-    try {
-      const { data } = await axios.request(options);
-      return data;
-    } catch (error) {
-      return error;
+      try {
+        console.log("data: ", options.data, "ID: ", employeeId);
+        const { data } = await axios.request(options);
+        console.log("API_data: ", data);
+        return data;
+      } catch (error) {
+        console.log("API_Erro: ", error);
+        return error;
+      }
     }
   };
 
-  const DeletarFuncionario = async (employeeId: string) => {
-    const options = {
-      method: "DELETE",
-      url: `http://localhost:8080/funcionario/${employeeId}`,
-    };
+  const DeletarFuncionario = async (employeeId: number | null) => {
+    if (employeeId !== null) {
+      const options = {
+        method: "DELETE",
+        url: `http://localhost:8080/funcionario/${employeeId}`,
+      };
 
-    try {
-      const { data } = await axios.request(options);
-      return data;
-    } catch (error) {
-      return error;
+      try {
+        const { data } = await axios.request(options);
+        return data;
+      } catch (error) {
+        return error;
+      }
     }
   };
 
-  const DetalhesFuncionario = async (employeeId: number) => {
-    const options = {
-      method: "GET",
-      url: `http://localhost:8080/funcionario/${employeeId}`,
-    };
+  const DetalhesFuncionario = async (employeeId: number | null) => {
+    if (employeeId !== null) {
+      const options = {
+        method: "GET",
+        url: `http://localhost:8080/funcionario/${employeeId}`,
+      };
 
-    try {
-      const { data } = await axios.request(options);
-      return data;
-    } catch (error) {
-      return error;
+      try {
+        const { data } = await axios.request(options);
+        return data;
+      } catch (error) {
+        return error;
+      }
     }
   };
 
