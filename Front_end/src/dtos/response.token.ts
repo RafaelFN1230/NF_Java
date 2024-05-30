@@ -1,3 +1,4 @@
-export interface ResponseToken {
-  access_token: string;
+export interface ResponseDTO {
+  id: number;
+  message: string;
 }
