@@ -1,4 +1,4 @@
-"use cliente";
+"use client";
 
 import FuncionariosAPI from "@/api/funcionarios.api";
 import VagasTable from "./vagas_table";
@@ -8,10 +8,11 @@ import { Dialog, DialogContent, DialogTitle, DialogTrigger, DialogDescription, D
 import { Form, FormDescription } from "@/components/ui/form";
 import CriarVagaViewModel from "@/viewModel/CriarVaga.ViewModel";
 import { toast } from "sonner";
-import InputFormField from "./forms/input/forms_field_input";
-import InputTextAreaFormField from "./forms/inputTextArea/forms_field_inputTextArea";
+import InputFormField from "../forms/input/forms_field_input";
+import InputTextAreaFormField from "../forms/inputTextArea/forms_field_inputTextArea";
 import add_icon from "@/assets/images/svg/plus-circle.svg"
 import Image from "next/image";
+import { getCookies } from "@/actions/cookies";
 
 interface JobOffer {
   jobOfferName: string;
@@ -19,10 +20,14 @@ interface JobOffer {
   salary: string;
 }
 
-export default function ButtonAddJobOffers() {
-  const employeeId: number = 2
+interface ButtonAddJobOffersProps{
+  user_id: number|null
+}
+
+export default function ButtonAddJobOffers({user_id}: ButtonAddJobOffersProps) {
+
   const { NewJobOfferForm, errorMessage } = CriarVagaViewModel();
-  const { form, onSubmit } = NewJobOfferForm(employeeId);
+  const { form, onSubmit } = NewJobOfferForm(user_id);
   const [isOpen, setIsOpen] = useState(false)
 
   const handleSubmit = async (data: JobOffer) => {

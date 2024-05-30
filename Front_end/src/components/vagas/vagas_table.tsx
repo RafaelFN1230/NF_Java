@@ -30,14 +30,19 @@ import {
   HoverCardTrigger,
 } from "../ui/hover-card";
 import VagasListaCandidatos from "./vagas_lista_candidatos";
+import { getCookies } from "@/actions/cookies";
 
-export default function VagasTable() {
+interface VagasTableProps {
+  user_id: number|null
+}
+
+export default function VagasTable({user_id}: VagasTableProps) {
   const { DetalhesFuncionario } = FuncionariosAPI();
   const [data, setData] = useState<Employee | null>(null);
 
   const fetchData = useCallback(async () => {
     try {
-      const result = await DetalhesFuncionario(2);
+      const result = await DetalhesFuncionario(user_id);
       setData(result);
     } catch (error) {
       console.error("Erro ao buscar dados do funcionário:", error);
