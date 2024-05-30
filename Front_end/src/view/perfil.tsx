@@ -1,5 +1,6 @@
 import DashboadBody from "@/components/DashboadBody/dashboard_body";
 import Header from "@/components/Header/header";
+import PerfilComponents from "@/components/Perfil/perfil";
 import { ReactElement } from "react";
 
 export function Perfil(): ReactElement {
@@ -7,7 +8,7 @@ export function Perfil(): ReactElement {
     <div>
       <Header />
       <div>
-        <DashboadBody />
+        <PerfilComponents />
       </div>
     </div>
   );
