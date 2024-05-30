@@ -8,8 +8,6 @@ import { z } from "zod";
 export default function AdicionarCandidatoViewModel() {
   const [errorMessage, setErrorMessage] = useState<string>("");
   const { CadastrarCandidato } = CandidatosAPI();
-
-  const form = useForm()
   
   const rgRegex = /\b\d{2}\.\d{3}\.\d{3}-\d{2}\b/;
 
@@ -34,7 +32,7 @@ export default function AdicionarCandidatoViewModel() {
         message: "Favor inserir o RG do candidato.",
       })
       .refine((rg) => validarRG(rg), {
-        message: "Favor inserir o RG no padrão 012.345.678-90",
+        message: "Favor inserir o RG no padrão 01.234.567.89",
       }
     ),
     resumoCurriculo: z
