@@ -36,7 +36,7 @@ export default function CriarVagaViewModel() {
     )
   })
 
-  function NewJobOfferForm(employeeId: number) {
+  function NewJobOfferForm(employeeId: number | null) {
     const form = useForm<z.infer<typeof FormSchema>>({
       resolver: zodResolver(FormSchema),
       defaultValues: {
@@ -47,6 +47,7 @@ export default function CriarVagaViewModel() {
     });
     
     async function onSubmit(values: z.infer<typeof FormSchema>) {
+      if (employeeId !== null){
       console.log("DADOS Enviados: ", values);
       try {
         await CadastrarVaga(employeeId, values.jobOfferName, values.description, values.salary); 
@@ -60,8 +61,8 @@ export default function CriarVagaViewModel() {
           setErrorMessage("Ocorreu um erro ao processar a requisição.");
         }
         return { success: false };
-      }
-    }
+      }} else { return { success: false }}
+    } 
     return { form, onSubmit };
   }
 
