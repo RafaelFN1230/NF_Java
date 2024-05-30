@@ -10,9 +10,9 @@ import {
 } from "@/components/ui/dialog";
 import { Button } from "../../ui/button";
 import { FormProvider } from "react-hook-form";
-import InputFormField from "../forms/input/forms_field_input";
+import InputFormField from "../../forms/input/forms_field_input";
 import { useEffect, useState } from "react";
-import { InputTextAreaFormField } from "../forms/inputTextArea/forms_field_inputTextArea";
+import { InputTextAreaFormField } from "../../forms/inputTextArea/forms_field_inputTextArea";
 import EditarVagaViewModel from "@/viewModel/EditarVaga.ViewModel";
 import { toast } from "sonner";
 import { Form } from "@/components/ui/form";

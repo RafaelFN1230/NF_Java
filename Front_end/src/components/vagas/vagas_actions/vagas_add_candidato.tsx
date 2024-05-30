@@ -11,11 +11,11 @@ import {
 import { Button } from "../../ui/button";
 import AdicionarCandidatoViewModel from "@/viewModel/AdicionarCandidato.ViewModel";
 import { FormProvider } from "react-hook-form";
-import InputFormField from "../forms/input/forms_field_input";
+import InputFormField from "../../forms/input/forms_field_input";
 import { useState } from "react";
 import { toast } from "sonner";
 import { Form } from "@/components/ui/form";
-import InputTextAreaFormField from "../forms/inputTextArea/forms_field_inputTextArea";
+import InputTextAreaFormField from "../../forms/inputTextArea/forms_field_inputTextArea";
 
 interface ActionAddCandidateProps {
   jobOfferId: number;
