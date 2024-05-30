@@ -16,7 +16,6 @@ import {
 import { SelectSingleEventHandler } from "react-day-picker";
 
 export function SelectInterval() {
-
   const handleDateChange: SelectSingleEventHandler = (date) => {
     if (date instanceof Date) {
       changeDate(date);

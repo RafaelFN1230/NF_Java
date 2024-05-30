@@ -24,12 +24,12 @@ import DashboardCardViewModel from "@/viewModel/DashboardCard.ViewModel";
 import { Employee } from "@/models/employee.model";
 
 interface MainChartProps {
-  funcionarios: Employee[] | null
+  funcionarios: Employee[] | null;
 }
 
 export default function CardComponent({ funcionarios }: MainChartProps) {
   const { GetData } = DashboardCardViewModel();
-  const data = GetData(funcionarios)
+  const data = GetData(funcionarios);
 
   return (
     <>

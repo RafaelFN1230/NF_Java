@@ -52,7 +52,7 @@ export default function ActionEdit({
       employeeName,
       email,
       data,
-      senha
+      senha,
     });
   }, [employeeId, employeeName, email, data, senha, setUser]);
 

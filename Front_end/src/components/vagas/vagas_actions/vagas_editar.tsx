@@ -17,14 +17,12 @@ import EditarVagaViewModel from "@/viewModel/EditarVaga.ViewModel";
 import { toast } from "sonner";
 import { Form } from "@/components/ui/form";
 
-
-
 interface ActionEditProps {
   id: number;
   nome: string;
   descricao: string;
   salario: string;
-  onEditComplete: () => void; 
+  onEditComplete: () => void;
 }
 interface JobOffer {
   id: number;
@@ -38,7 +36,13 @@ interface JobOfferForm {
   salario: string;
 }
 
-export default function ActionEdit({ id, nome, descricao, salario, onEditComplete }: ActionEditProps) {
+export default function ActionEdit({
+  id,
+  nome,
+  descricao,
+  salario,
+  onEditComplete,
+}: ActionEditProps) {
   const { EditJobOfferForm, errorMessage, setJobOffer } = EditarVagaViewModel();
   const { form, onSubmit } = EditJobOfferForm();
   const [isOpen, setIsOpen] = useState(false);
@@ -51,24 +55,29 @@ export default function ActionEdit({ id, nome, descricao, salario, onEditComplet
     const result = await onSubmit(data);
     if (result.success) {
       setIsOpen(false);
-      toast.info("Vaga editada com sucesso!", {description: `ID da vaga:   ${id} Nome da vaga:   ${data.nome}      Descricao:     ${data.descricao}      Salário: ${data.salario}` , duration: 8000 })
-      onEditComplete()
+      toast.info("Vaga editada com sucesso!", {
+        description: `ID da vaga:   ${id} Nome da vaga:   ${data.nome}      Descricao:     ${data.descricao}      Salário: ${data.salario}`,
+        duration: 8000,
+      });
+      onEditComplete();
     }
   };
   return (
     <>
       <Dialog open={isOpen} onOpenChange={setIsOpen}>
         <DialogTrigger asChild>
-          <Button className="bg-blue-500 text-white mx-3 hover:bg-blue-700">Editar</Button>
+          <Button className="bg-blue-500 text-white mx-3 hover:bg-blue-700">
+            Editar
+          </Button>
         </DialogTrigger>
         <DialogContent>
-        <DialogHeader>
+          <DialogHeader>
             <DialogTitle>Editar Vaga</DialogTitle>
             <DialogDescription>
               Insira novas informações da vaga.
             </DialogDescription>
           </DialogHeader>
-          <Form {...form} >
+          <Form {...form}>
             <form
               onSubmit={form.handleSubmit(handleSubmit)}
               className="bg-white rounded px-8 pt-6 mb-4 h-full"
@@ -81,12 +90,12 @@ export default function ActionEdit({ id, nome, descricao, salario, onEditComplet
                 form={form}
               />
               <InputFormField
-                  name={"salario"}
-                  text={"Salário"}
-                  placeholder={""}
-                  type={"salario"}
-                  form={form}
-                />
+                name={"salario"}
+                text={"Salário"}
+                placeholder={""}
+                type={"salario"}
+                form={form}
+              />
               <InputTextAreaFormField
                 name={"descricao"}
                 text={"Descrição"}
@@ -95,9 +104,12 @@ export default function ActionEdit({ id, nome, descricao, salario, onEditComplet
                 form={form}
               />
               <div className="w-full flex justify-center">
-              <Button type="submit" className="mt-5 px-10 bg-blue-500 text-white hover:bg-blue-700">
-                Editar
-              </Button>
+                <Button
+                  type="submit"
+                  className="mt-5 px-10 bg-blue-500 text-white hover:bg-blue-700"
+                >
+                  Editar
+                </Button>
               </div>
               <div className="w-full max-w-xs">
                 {errorMessage && (

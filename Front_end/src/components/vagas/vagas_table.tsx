@@ -33,10 +33,10 @@ import VagasListaCandidatos from "./vagas_lista_candidatos";
 import { getCookies } from "@/actions/cookies";
 
 interface VagasTableProps {
-  user_id: number|null
+  user_id: number | null;
 }
 
-export default function VagasTable({user_id}: VagasTableProps) {
+export default function VagasTable({ user_id }: VagasTableProps) {
   const { DetalhesFuncionario } = FuncionariosAPI();
   const [data, setData] = useState<Employee | null>(null);
 
@@ -76,7 +76,10 @@ export default function VagasTable({user_id}: VagasTableProps) {
             <TableRow key={vaga.id}>
               <TableCell className="flex justify-center">{vaga.id}</TableCell>
               <TableCell>
-                <VagasListaCandidatos jobOffer={vaga}  onEditComplete={fetchData}/>
+                <VagasListaCandidatos
+                  jobOffer={vaga}
+                  onEditComplete={fetchData}
+                />
               </TableCell>
               <TableCell>{vaga.descricao}</TableCell>
               <TableCell>{vaga.salario}</TableCell>

@@ -12,23 +12,26 @@ export default function CandidatosAPI() {
     const options = {
       method: "POST",
       url: `http://localhost:8080/vaga/${jobOfferId}/candidato`,
-      data: { rg: rg, nomeCandidato: nomeCandidato, email: email, resumoCurriculo: resumoCurriculo },
+      data: {
+        rg: rg,
+        nomeCandidato: nomeCandidato,
+        email: email,
+        resumoCurriculo: resumoCurriculo,
+      },
     };
 
     try {
       const { data } = await axios.request(options);
       return data;
-    } catch (error:any) {
+    } catch (error: any) {
       if (axios.isAxiosError(error) && error.response && error.response.data) {
         throw new Error(error.response.data);
       }
       throw new Error("Ocorreu um erro ao processar a requisição.");
     }
   };
-  
-  const DeletarCandidato = async (
-    rg: string
-  ) => {
+
+  const DeletarCandidato = async (rg: string) => {
     const options = {
       method: "DELETE",
       url: `http://localhost:8080/${rg}`,
@@ -37,14 +40,14 @@ export default function CandidatosAPI() {
     try {
       const { data } = await axios.request(options);
       return data;
-    } catch (error:any) {
+    } catch (error: any) {
       if (axios.isAxiosError(error) && error.response && error.response.data) {
         throw new Error(error.response.data);
       }
       throw new Error("Ocorreu um erro ao processar a requisição.");
     }
   };
-  
+
   const EditarCandidato = async (
     rg: string,
     nomeCandidato: string,
@@ -54,13 +57,18 @@ export default function CandidatosAPI() {
     const options = {
       method: "PUT",
       url: `http://localhost:8080/${rg}`,
-      data: { rg: rg, nomeCandidato: nomeCandidato, email: email, resumoCurriculo: resumoCurriculo },
+      data: {
+        rg: rg,
+        nomeCandidato: nomeCandidato,
+        email: email,
+        resumoCurriculo: resumoCurriculo,
+      },
     };
 
     try {
       const { data } = await axios.request(options);
       return data;
-    } catch (error:any) {
+    } catch (error: any) {
       if (axios.isAxiosError(error) && error.response && error.response.data) {
         throw new Error(error.response.data);
       }
@@ -71,6 +79,6 @@ export default function CandidatosAPI() {
   return {
     CadastrarCandidato,
     DeletarCandidato,
-    EditarCandidato
+    EditarCandidato,
   };
 }

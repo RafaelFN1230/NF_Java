@@ -15,12 +15,12 @@ import {
 } from "recharts";
 
 interface MainChartProps {
-  funcionarios: Employee[] | null
+  funcionarios: Employee[] | null;
 }
 
 export default function MainChart({ funcionarios }: MainChartProps) {
   const { GetData } = MainDashboardChartViewModel();
-  const data = GetData(funcionarios)
+  const data = GetData(funcionarios);
 
   return (
     <div style={{ width: "100%", height: 300 }}>
@@ -41,9 +41,24 @@ export default function MainChart({ funcionarios }: MainChartProps) {
           <YAxis />
           <Tooltip />
           <Legend />
-          <Bar dataKey="vagasComCandidatos" barSize={20} fill="#4F46E5" name="Vagas com candidatos"/>
-          <Bar dataKey="vagasSemCandidatos" barSize={20} fill="#ff7300" name="Vagas sem candidatos"/>
-          <Line type="monotone" dataKey="n_candidatos" stroke="#10B981" name="Número total de candidatos"/>
+          <Bar
+            dataKey="vagasComCandidatos"
+            barSize={20}
+            fill="#4F46E5"
+            name="Vagas com candidatos"
+          />
+          <Bar
+            dataKey="vagasSemCandidatos"
+            barSize={20}
+            fill="#ff7300"
+            name="Vagas sem candidatos"
+          />
+          <Line
+            type="monotone"
+            dataKey="n_candidatos"
+            stroke="#10B981"
+            name="Número total de candidatos"
+          />
         </ComposedChart>
       </ResponsiveContainer>
     </div>

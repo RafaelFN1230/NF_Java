@@ -39,7 +39,10 @@ export default function ActionAddCandidate({
     const result = await onSubmit(data);
     if (result.success) {
       setIsOpen(false);
-      toast.success("Candidato adicionado com sucesso!", {description: `ID da vaga:   ${jobOfferId} Nome do candidato:   ${data.nomeCandidato}      RG:     ${data.rg}      E-mail: ${data.email}` , duration: 8000 })
+      toast.success("Candidato adicionado com sucesso!", {
+        description: `ID da vaga:   ${jobOfferId} Nome do candidato:   ${data.nomeCandidato}      RG:     ${data.rg}      E-mail: ${data.email}`,
+        duration: 8000,
+      });
       form.reset();
     }
   };
@@ -93,9 +96,12 @@ export default function ActionAddCandidate({
                 form={form}
               />
               <div className="w-full flex justify-center">
-              <Button type="submit" className="mt-5 px-10 bg-green-500 text-white hover:bg-green-700">
-              Adicionar
-              </Button>
+                <Button
+                  type="submit"
+                  className="mt-5 px-10 bg-green-500 text-white hover:bg-green-700"
+                >
+                  Adicionar
+                </Button>
               </div>
               <div className="w-full max-w-xs">
                 {errorMessage && (

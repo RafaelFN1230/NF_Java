@@ -24,9 +24,14 @@ export function InputTextAreaForms({
   return (
     <>
       <FormItem>
-<FormLabel>{text}</FormLabel>
+        <FormLabel>{text}</FormLabel>
         <FormControl>
-          <textarea placeholder={placeholder} type={type} {...field}  className="box-border h-20 w-full bg-blackA2 shadow-blackA6 inline-flex appearance-none items-center justify-center rounded-md p-[10px] text-sm leading-none placeholder:text-muted-foreground outline-none border border-input focus:shadow-[0_0_0_2px_black] selection:color-white selection:bg-blackA6 resize-none"/>
+          <textarea
+            placeholder={placeholder}
+            type={type}
+            {...field}
+            className="box-border h-20 w-full bg-blackA2 shadow-blackA6 inline-flex appearance-none items-center justify-center rounded-md p-[10px] text-sm leading-none placeholder:text-muted-foreground outline-none border border-input focus:shadow-[0_0_0_2px_black] selection:color-white selection:bg-blackA6 resize-none"
+          />
         </FormControl>
         <FormMessage />
       </FormItem>

@@ -25,11 +25,13 @@ export default function EditarVagaViewModel() {
 
   const form = useForm<z.infer<typeof FormSchema>>({
     resolver: zodResolver(FormSchema),
-    defaultValues: jobOffer ? {
-      nome: jobOffer.nome,
-      salario: jobOffer.salario,
-      descricao: jobOffer.descricao,
-    } : undefined,
+    defaultValues: jobOffer
+      ? {
+          nome: jobOffer.nome,
+          salario: jobOffer.salario,
+          descricao: jobOffer.descricao,
+        }
+      : undefined,
   });
 
   const updateFormValues = useCallback(() => {
@@ -49,7 +51,12 @@ export default function EditarVagaViewModel() {
   async function onSubmit(values: z.infer<typeof FormSchema>) {
     console.log("DADOS Enviados: ", values);
     try {
-      await EditarVaga(jobOffer?.id!, values.nome, values.descricao, values.salario); 
+      await EditarVaga(
+        jobOffer?.id!,
+        values.nome,
+        values.descricao,
+        values.salario,
+      );
       setErrorMessage("");
       return { success: true };
     } catch (error: any) {
@@ -66,6 +73,6 @@ export default function EditarVagaViewModel() {
   return {
     EditJobOfferForm: () => ({ form, onSubmit }),
     errorMessage,
-    setJobOffer, 
+    setJobOffer,
   };
 }

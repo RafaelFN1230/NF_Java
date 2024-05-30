@@ -10,8 +10,8 @@ export default function AdicionarCandidatoViewModel() {
   const { CadastrarFuncionarios, ListaDeFuncionarios } = FuncionariosAPI();
 
   function formatDate(date: Date): string {
-    const day = String(date.getDate()).padStart(2, '0');
-    const month = String(date.getMonth() + 1).padStart(2, '0');
+    const day = String(date.getDate()).padStart(2, "0");
+    const month = String(date.getMonth() + 1).padStart(2, "0");
     const year = date.getFullYear();
 
     return `${day}/${month}/${year}`;
@@ -19,26 +19,18 @@ export default function AdicionarCandidatoViewModel() {
 
   const hoje = new Date();
   const startingDate: string = formatDate(hoje);
-  
 
   const FormSchema = z.object({
     nome: z.string().min(1, {
-      message: "Favor inseir o nome do funcionário."
+      message: "Favor inseir o nome do funcionário.",
     }),
-    email: z
-      .string()
-      .email()
-      .min(1, {
-      message: "Favor inseir o E-mail do funcionário."
-      }
-    ),
-    senha: z
-      .string()
-      .min(6, {
-        message: "Favor inseir a senha  do funcionário, com pelo menos 6 digitos",
-      }
-    ),
-  })
+    email: z.string().email().min(1, {
+      message: "Favor inseir o E-mail do funcionário.",
+    }),
+    senha: z.string().min(6, {
+      message: "Favor inseir a senha  do funcionário, com pelo menos 6 digitos",
+    }),
+  });
 
   function NewUserForm() {
     const form = useForm<z.infer<typeof FormSchema>>({
@@ -49,11 +41,16 @@ export default function AdicionarCandidatoViewModel() {
         senha: "",
       },
     });
-    
+
     async function onSubmit(values: z.infer<typeof FormSchema>) {
       console.log("DADOS Enviados: ", values);
       try {
-        await CadastrarFuncionarios (values.nome, startingDate, values.email, values.senha); 
+        await CadastrarFuncionarios(
+          values.nome,
+          startingDate,
+          values.email,
+          values.senha,
+        );
         setErrorMessage("");
         return { success: true };
       } catch (error: any) {
@@ -69,11 +66,9 @@ export default function AdicionarCandidatoViewModel() {
     return { form, onSubmit };
   }
 
-
   return {
     NewUserForm,
     errorMessage,
     FormSchema,
   };
 }
-

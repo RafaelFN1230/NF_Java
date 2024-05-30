@@ -9,7 +9,7 @@ import { useCallback, useEffect, useState } from "react";
 import { Employee } from "@/models/employee.model";
 
 export default function DashboadBody() {
-  const {ListaDeFuncionarios} = FuncionariosAPI()
+  const { ListaDeFuncionarios } = FuncionariosAPI();
   const [data, setData] = useState<Employee[] | null>(null);
 
   const fetchData = useCallback(async () => {
@@ -29,14 +29,14 @@ export default function DashboadBody() {
     <>
       <div className="flex flex-col-reverse">
         <div className="h-1/2">
-          <MainChart funcionarios={data}/>
+          <MainChart funcionarios={data} />
         </div>
         <div className="h-1/2 flex flex-row mt-5">
           <div className="w-1/2">
-            <PieChartcomponent funcionarios={data}/>
+            <PieChartcomponent funcionarios={data} />
           </div>
           <div className="w-1/2">
-            <CardComponent funcionarios={data}/>
+            <CardComponent funcionarios={data} />
           </div>
         </div>
       </div>

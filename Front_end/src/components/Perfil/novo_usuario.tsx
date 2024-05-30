@@ -22,7 +22,7 @@ interface Funcionario {
   data: string;
   email: string;
   senha: string;
-} 
+}
 
 const ListaDeFuncionarios = async () => {
   const options = {
@@ -44,7 +44,9 @@ export default function NewUserComponent() {
 
   const handleSubmit = async (FormData: FormUserData) => {
     const funcionarios = await ListaDeFuncionarios();
-    const emailExists = funcionarios.some((funcionario: { email: string; }) => funcionario.email === FormData.email);
+    const emailExists = funcionarios.some(
+      (funcionario: { email: string }) => funcionario.email === FormData.email,
+    );
 
     if (emailExists) {
       toast.error("O e-mail já está em uso!", { duration: 8000 });
@@ -62,51 +64,47 @@ export default function NewUserComponent() {
 
   return (
     <>
-          <Form {...form}>
-            <form
-              onSubmit={form.handleSubmit(handleSubmit)}
-              className="bg-white rounded px-8 pt-6 mb-4 h-full"
+      <Form {...form}>
+        <form
+          onSubmit={form.handleSubmit(handleSubmit)}
+          className="bg-white rounded px-8 pt-6 mb-4 h-full"
+        >
+          <InputFormField
+            name={"nome"}
+            text={"Nome Completo"}
+            placeholder={""}
+            type={"nome"}
+            form={form}
+          />
+          <InputFormField
+            name={"email"}
+            text={"E-mail"}
+            placeholder={""}
+            type={"email"}
+            form={form}
+          />
+          <InputFormField
+            name={"senha"}
+            text={"Senha"}
+            placeholder={""}
+            type={"password"}
+            form={form}
+          />
+          <div className="flex items-center justify-center pt-4">
+            <Button
+              className=" bg-green-500 hover:bg-green-700 text-white font-bold py-4 px-10 rounded focus:outline-none focus:shadow-outline"
+              type="submit"
             >
-              <InputFormField
-                name={"nome"}
-                text={"Nome Completo"}
-                placeholder={""}
-                type={"nome"}
-                form={form}
-              />
-              <InputFormField
-                name={"email"}
-                text={"E-mail"}
-                placeholder={""}
-                type={"email"}
-                form={form}
-              />
-              <InputFormField
-                name={"senha"}
-                text={"Senha"}
-                placeholder={""}
-                type={"password"}
-                form={form}
-              />
-              <div className="flex items-center justify-center pt-4">
-                <Button
-                  className=" bg-green-500 hover:bg-green-700 text-white font-bold py-4 px-10 rounded focus:outline-none focus:shadow-outline"
-                  type="submit"
-                >
-                  Adicionar
-                </Button>
-              </div>
-              <div className="w-full max-w-xs">
-                {errorMessage && (
-                  <p className="font-bold text-sm text-red-500">
-                    {errorMessage}
-                  </p>
-                )}
-              </div>
-            </form>
-          </Form>
-
+              Adicionar
+            </Button>
+          </div>
+          <div className="w-full max-w-xs">
+            {errorMessage && (
+              <p className="font-bold text-sm text-red-500">{errorMessage}</p>
+            )}
+          </div>
+        </form>
+      </Form>
     </>
   );
 }
-

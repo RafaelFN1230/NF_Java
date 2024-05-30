@@ -6,56 +6,55 @@ import { navigate } from "@/actions/navigate";
 import { validateUserUsecase } from "@/use_case/validate.user";
 
 export default function LoginViewModel() {
-  const [errorMessage, setErrorMessage] = useState<string>('');
+  const [errorMessage, setErrorMessage] = useState<string>("");
   const [loading, setLoading] = useState(false);
-
 
   const formSchema = z.object({
     username: z
       .string()
       .min(1, {
-        message: 'Favor inserir usuário.'
+        message: "Favor inserir usuário.",
       })
-      .email('E-mail inválido.'),
+      .email("E-mail inválido."),
     password: z.string().min(6, {
-      message: 'Favor inserir senha.'
-    })
+      message: "Favor inserir senha.",
+    }),
   });
 
   function ProfileForm() {
     const form = useForm<z.infer<typeof formSchema>>({
       resolver: zodResolver(formSchema),
       defaultValues: {
-        username: '',
-        password: ''
-      }
+        username: "",
+        password: "",
+      },
     });
 
     const onSubmit = useCallback(async (values: z.infer<typeof formSchema>) => {
       console.log("DADOS Enviados: ", values);
-      setLoading(true)
+      setLoading(true);
       const resultValidate = await validateUserUsecase(
         values.username,
-        values.password
+        values.password,
       );
       switch (resultValidate) {
-        case 'authorized':
-          navigate('/')
+        case "authorized":
+          navigate("/");
           break;
 
-        case 'unauthorized':
-          setLoading(false)
-          setErrorMessage('Email ou senha inválida');
+        case "unauthorized":
+          setLoading(false);
+          setErrorMessage("Email ou senha inválida");
           break;
 
-        case 'server-error':
-          setLoading(false)
-          setErrorMessage('Não é possivel acessar o sistema no momento!');
+        case "server-error":
+          setLoading(false);
+          setErrorMessage("Não é possivel acessar o sistema no momento!");
           break;
 
         default:
-          setLoading(false)
-          setErrorMessage('Não é possivel acessar o sistema no momento!');
+          setLoading(false);
+          setErrorMessage("Não é possivel acessar o sistema no momento!");
           break;
       }
     }, []);
@@ -66,6 +65,6 @@ export default function LoginViewModel() {
   return {
     ProfileForm,
     errorMessage,
-    loading
+    loading,
   };
 }

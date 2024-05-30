@@ -9,14 +9,28 @@ interface JobOffer {
   rg: string;
   email: string;
   resumoCurriculo: string;
-  onEditComplete: () => void
+  onEditComplete: () => void;
 }
 
-export default function CandidatosActionButtons({ id, nome, rg, email, resumoCurriculo, onEditComplete }: JobOffer) {
+export default function CandidatosActionButtons({
+  id,
+  nome,
+  rg,
+  email,
+  resumoCurriculo,
+  onEditComplete,
+}: JobOffer) {
   return (
     <div className="flex justify-row mx-3">
-      <ActionDelete rg={rg} nome={nome} onEditComplete={onEditComplete}/>
-      <ActionEdit id={id} nome={nome} rg={rg} email={email} resumoCurriculo={resumoCurriculo} onEditComplete={onEditComplete}/>      
+      <ActionDelete rg={rg} nome={nome} onEditComplete={onEditComplete} />
+      <ActionEdit
+        id={id}
+        nome={nome}
+        rg={rg}
+        email={email}
+        resumoCurriculo={resumoCurriculo}
+        onEditComplete={onEditComplete}
+      />
     </div>
   );
 }

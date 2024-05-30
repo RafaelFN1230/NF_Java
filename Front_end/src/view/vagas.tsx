@@ -3,10 +3,10 @@ import VagasBody from "@/components/vagas/vagas";
 import { ReactElement } from "react";
 
 interface VagasProps {
-  user_id: number|null
+  user_id: number | null;
 }
 
-export function Vagas({user_id}: VagasProps): ReactElement {
+export function Vagas({ user_id }: VagasProps): ReactElement {
   return (
     <div>
       <Header />

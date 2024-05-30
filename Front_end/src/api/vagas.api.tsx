@@ -69,7 +69,7 @@ export default function VagasAPI() {
 
     try {
       const data = await axios.request(options);
-      const requestData = data.data
+      const requestData = data.data;
       return requestData;
     } catch (error) {
       return error;

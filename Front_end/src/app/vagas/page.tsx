@@ -4,7 +4,7 @@ import { getCookies } from "@/actions/cookies";
 import { Vagas } from "@/view/vagas";
 
 export default async function InvoicesPage() {
-  const user_id = await getCookies('user_id')
+  const user_id = await getCookies("user_id");
 
   return (
     <>

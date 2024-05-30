@@ -4,12 +4,9 @@ import { useRouter } from "next/navigation";
 
 export default function VagasViewModel() {
   const router = useRouter();
-  const { DetalhesFuncionario } = FuncionariosAPI()
+  const { DetalhesFuncionario } = FuncionariosAPI();
 
-  const data = DetalhesFuncionario(2)
+  const data = DetalhesFuncionario(2);
 
-  
-  return {
-    
-  };
+  return {};
 }

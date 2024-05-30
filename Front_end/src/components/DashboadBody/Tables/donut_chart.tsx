@@ -7,12 +7,12 @@ import { Employee } from "@/models/employee.model";
 import MainDashboardDonutChartViewModel from "@/viewModel/DashboardDonutdMainChart.ViewModel";
 
 interface MainChartProps {
-  funcionarios: Employee[] | null
+  funcionarios: Employee[] | null;
 }
 
 export default function PieChartComponent({ funcionarios }: MainChartProps) {
   const { GetData } = MainDashboardDonutChartViewModel();
-  const employeeData = GetData(funcionarios)
+  const employeeData = GetData(funcionarios);
 
   let data = [
     {
@@ -26,8 +26,8 @@ export default function PieChartComponent({ funcionarios }: MainChartProps) {
       value: employeeData.vagasSemCandidatos,
       color: "#10B981",
       cutout: "50%",
-    }
-  ]
+    },
+  ];
 
   const COLORS = ["#4F46E5", "#10B981"];
 
@@ -56,7 +56,7 @@ export default function PieChartComponent({ funcionarios }: MainChartProps) {
         Vagas com e sem candidatos
       </div>
       <div className="flex items-center justify-center max-h-72 ">
-      <Doughnut data={finalData} options={options}/>
+        <Doughnut data={finalData} options={options} />
       </div>
     </div>
   );

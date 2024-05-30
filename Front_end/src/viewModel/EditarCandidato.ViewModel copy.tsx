@@ -27,12 +27,14 @@ export default function EditarCandidatoViewModel() {
 
   const form = useForm<z.infer<typeof FormSchema>>({
     resolver: zodResolver(FormSchema),
-    defaultValues: candidate ? {
-      nome: candidate.nome,
-      rg: candidate.rg,
-      email: candidate.email,
-      resumoCurriculo: candidate.resumoCurriculo,
-    } : undefined,
+    defaultValues: candidate
+      ? {
+          nome: candidate.nome,
+          rg: candidate.rg,
+          email: candidate.email,
+          resumoCurriculo: candidate.resumoCurriculo,
+        }
+      : undefined,
   });
 
   const updateFormValues = useCallback(() => {
@@ -53,7 +55,12 @@ export default function EditarCandidatoViewModel() {
   async function onSubmit(values: z.infer<typeof FormSchema>) {
     console.log("DADOS Enviados: ", values);
     try {
-      await EditarCandidato(candidate?.rg!, values.nome, values.email, values.resumoCurriculo); 
+      await EditarCandidato(
+        candidate?.rg!,
+        values.nome,
+        values.email,
+        values.resumoCurriculo,
+      );
       setErrorMessage("");
       return { success: true };
     } catch (error: any) {
@@ -70,6 +77,6 @@ export default function EditarCandidatoViewModel() {
   return {
     EditCandidateForm: () => ({ form, onSubmit }),
     errorMessage,
-    setCandidate, 
+    setCandidate,
   };
 }

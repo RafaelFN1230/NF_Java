@@ -15,8 +15,7 @@ import {
 import { LoadingButton } from "../ui/loading.button";
 
 export function Login() {
-  const { ProfileForm, errorMessage, loading } =
-    LoginViewModel();
+  const { ProfileForm, errorMessage, loading } = LoginViewModel();
 
   const { form, onSubmit } = ProfileForm();
   return (

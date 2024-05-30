@@ -50,13 +50,13 @@ export default function PerfilComponents() {
   return (
     <>
       <Dialog>
-          <div className="w-full flex justify-end">
-        <DialogTrigger asChild>
+        <div className="w-full flex justify-end">
+          <DialogTrigger asChild>
             <Button className="m-5   bg-green-700 text-white hover:bg-green-800">
               Adicionar Funcionário
             </Button>
-        </DialogTrigger>
-          </div>
+          </DialogTrigger>
+        </div>
         <DialogContent>
           <DialogHeader>
             <DialogTitle>Adicionar Funcionário</DialogTitle>
@@ -65,34 +65,34 @@ export default function PerfilComponents() {
         </DialogContent>
       </Dialog>
       <div className="min-w-fit mx-5 border rounded-md">
-      <Table>
-        <TableCaption>Lista de Usuarios</TableCaption>
-        <TableHeader>
-          <TableHead className="">ID</TableHead>
-          <TableHead className="">Nome Completo</TableHead>
-          <TableHead className="">E-mail</TableHead>
-          <TableHead className="flex justify-center">Ação</TableHead>
-        </TableHeader>
-        <TableBody>
-          {data.map((user: Employee) => (
-            <TableRow key={user.id}>
-              <TableCell>{user.id}</TableCell>
-              <TableCell>{user.nome}</TableCell>
-              <TableCell>{user.email}</TableCell>
-              <TableCell className="max-w-10">
-                <UserActionButtons
-                  id={user.id}
-                  nome={user.nome}
-                  email={user.email}
-                  startingDate={user.data}
-                  password={user.senha}
-                  onEditComplete={fetchData}
-                />
-              </TableCell>
-            </TableRow>
-          ))}
-        </TableBody>
-      </Table>
+        <Table>
+          <TableCaption>Lista de Usuarios</TableCaption>
+          <TableHeader>
+            <TableHead className="">ID</TableHead>
+            <TableHead className="">Nome Completo</TableHead>
+            <TableHead className="">E-mail</TableHead>
+            <TableHead className="flex justify-center">Ação</TableHead>
+          </TableHeader>
+          <TableBody>
+            {data.map((user: Employee) => (
+              <TableRow key={user.id}>
+                <TableCell>{user.id}</TableCell>
+                <TableCell>{user.nome}</TableCell>
+                <TableCell>{user.email}</TableCell>
+                <TableCell className="max-w-10">
+                  <UserActionButtons
+                    id={user.id}
+                    nome={user.nome}
+                    email={user.email}
+                    startingDate={user.data}
+                    password={user.senha}
+                    onEditComplete={fetchData}
+                  />
+                </TableCell>
+              </TableRow>
+            ))}
+          </TableBody>
+        </Table>
       </div>
       <Toaster richColors closeButton />
     </>

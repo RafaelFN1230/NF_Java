@@ -9,30 +9,36 @@ import {
 } from "@/components/ui/dialog";
 import { Button } from "../../ui/button";
 import VagasAPI from "@/api/vagas.api";
-import { toast } from 'sonner';
+import { toast } from "sonner";
 import CandidatosAPI from "@/api/candidatos.api";
 
 interface ActionDeleteProps {
-  rg: string
-  nome: string
+  rg: string;
+  nome: string;
   onEditComplete: () => void;
 }
 
-export default function ActionDelete({ rg, nome, onEditComplete }: ActionDeleteProps) {
+export default function ActionDelete({
+  rg,
+  nome,
+  onEditComplete,
+}: ActionDeleteProps) {
   const { DeletarCandidato } = CandidatosAPI();
   const [isOpen, setIsOpen] = useState(false);
-  
 
   function handleExcluirVaga() {
     DeletarCandidato(rg)
       .then((response) => {
-        toast.error("Cadidato removido com sucesso!", {description: `Nome:   ${nome} RG:   ${rg}`, duration: 8000 })
+        toast.error("Cadidato removido com sucesso!", {
+          description: `Nome:   ${nome} RG:   ${rg}`,
+          duration: 8000,
+        });
         setIsOpen(false);
-        onEditComplete()
+        onEditComplete();
       })
       .catch((error) => {
         console.error("Erro ao deletar cadidato:", error);
-        toast.error("Erro ao deletar cadidato")
+        toast.error("Erro ao deletar cadidato");
         setIsOpen(false);
       });
   }
@@ -41,7 +47,7 @@ export default function ActionDelete({ rg, nome, onEditComplete }: ActionDeleteP
     <>
       <Dialog open={isOpen} onOpenChange={setIsOpen}>
         <DialogTrigger asChild>
-          <Button className="bg-red-500 text-white hover:bg-red-700" >
+          <Button className="bg-red-500 text-white hover:bg-red-700">
             Excluir
           </Button>
         </DialogTrigger>
@@ -56,7 +62,9 @@ export default function ActionDelete({ rg, nome, onEditComplete }: ActionDeleteP
               Confirmar
             </Button>
             <DialogClose asChild>
-              <Button className="bg-green-500 text-white hover:bg-green-700">Cancelar</Button>
+              <Button className="bg-green-500 text-white hover:bg-green-700">
+                Cancelar
+              </Button>
             </DialogClose>
           </div>
         </DialogContent>

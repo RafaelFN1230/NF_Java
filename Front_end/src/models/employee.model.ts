@@ -24,5 +24,5 @@ export interface Candidatos {
   nomeCandidato: string;
   rg: string;
   email: string;
-  resumoCurriculo: string
+  resumoCurriculo: string;
 }
