@@ -55,7 +55,7 @@ export default function NewUserComponent() {
     const result = await onSubmit(FormData);
     console.log("result: ", result);
     if (result.success) {
-      toast.info("Funcionário adicionado com sucesso!", {
+      toast.success("Funcionário adicionado com sucesso!", {
         description: `Nome do funcionário:   ${FormData.nome} E-mail do funcionário:   ${FormData.email}`,
         duration: 8000,
       });
