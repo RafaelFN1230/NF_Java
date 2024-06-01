@@ -49,9 +49,9 @@ export default function VagasListaCandidatos({
             {jobOffer.nome}
           </div>
         </DialogTrigger>
-        <DialogContent className="overflow-y-auto h-screen xl:min-w-[90rem] ">
-          <DialogTitle>Lista de candidatos</DialogTitle>
-          <DialogDescription>Vaga: {jobOffer.nome}</DialogDescription>
+        <DialogContent className="flex flex-col overflow-y-auto h-screen xl:min-w-[90rem] ">
+          <DialogTitle className="flex justify-center">Lista de candidatos</DialogTitle>
+          <DialogDescription >Vaga: {jobOffer.nome}</DialogDescription>
 
           <Table>
             <TableCaption>Lista de candidatos</TableCaption>
