@@ -83,7 +83,7 @@ export function Login() {
         </form>
       </Form>
       <p className="text-center text-gray-500 text-xs">
-        &copy;2024 Nexxo Empresarial. All rights reserved.
+        &copy;2024 Rafael Figliuolo Nascimento. All rights reserved.
       </p>
     </div>
   );
