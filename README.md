@@ -11,17 +11,18 @@ Para o desenvolvimento do projeto, optei por criar uma aplicação web, com o ba
 # Conteúdos Primários
 
 ## Introdução
-Esta é uma aplicação web voltada para a gestão de processos de Talent Acquisition, construída utilizando tecnologias modernas e eficientes para garantir desempenho, segurança e facilidade de uso. A aplicação foi desenvolvida com o objetivo de ajudar empresas a acompanhar a performance de seus funcionários e centralizar o cadastro e armazenamento de informações sobre vagas e candidatos.
+Esta aplicação web foi desenvolvida para gerenciar processos de Talent Acquisition, utilizando tecnologias modernas que garantem desempenho, segurança e facilidade de uso. Seu objetivo é ajudar empresas a acompanhar a performance dos funcionários e centralizar o cadastro e armazenamento de informações sobre vagas e candidatos.
 
 ### Tecnologias Utilizadas
 A aplicação foi desenvolvida com a seguinte stack tecnológica:
 
 #### Front-end
-- [Next.js](https://nextjs.org/), um framework React que proporciona uma experiência de desenvolvimento otimizada e oferece funcionalidades como renderização no lado do servidor e geração estática de páginas. Para a estilização, utilizei o [Tailwind CSS](https://tailwindcss.com/), um framework utilitário que facilita a criação de interfaces responsivas e personalizáveis. Além disso, componentes do [Shadcn](https://ui.shadcn.com/) foram integrados para oferecer uma interface de usuário coesa e moderna.
-- Para garantir a formatação foi utilizado [Prettier](https://prettier.io/), uma ferramenta de formatação de código que garante um estilo de código consistente e legível em todo o projeto, facilitando a manutenção e a colaboração entre os desenvolvedores.
-
+- [Next.js](https://nextjs.org/): Um framework React que oferece uma experiência de desenvolvimento otimizada, com funcionalidades como renderização no lado do servidor e geração estática de páginas.
+- [Tailwind CSS](https://tailwindcss.com/): Um framework utilitário que facilita a criação de interfaces responsivas e personalizáveis.
+- [Shadcn](https://ui.shadcn.com/): Componentes integrados que proporcionam uma interface de usuário coesa e moderna.
+- [Prettier](https://prettier.io/): Uma ferramenta de formatação de código que garante um estilo consistente e legível em todo o projeto, facilitando a manutenção e a colaboração entre desenvolvedores.
 #### Back-end
-- Java, uma linguagem robusta e amplamente utilizada para o desenvolvimento de aplicações de alta performance e escalabilidade.
+- Java: Uma linguagem robusta e amplamente utilizada para o desenvolvimento de aplicações de alta performance e escalabilidade.
 - Dependências do Projeto Java
     - Spring Boot Starter Data JPA: Facilita a implementação de repositórios baseados em JPA.
     - Spring Boot Starter Thymeleaf: Integração com o motor de templates Thymeleaf.
@@ -37,14 +38,14 @@ A aplicação foi desenvolvida com a seguinte stack tecnológica:
 - [PostgreSQL](https://www.postgresql.org/), um sistema de gerenciamento de banco de dados relacional avançado, conhecido por sua robustez e conformidade com os padrões SQL.
 
 ## Getting Started
-Clone este repositório através da URL:
+Clone este repositório utilizando a seguinte URL: 
 
 ```bash
 $ git clone https://github.com/RafaelFN1230/NF_Java.git
 ```
 
 ### Front-End
-Para rodar o front-end da aplicação, vá ate a pasta "Front_end", certifique-se de instalar todas as dependências e então dê o comando para rodar a aplicação.
+Para executar o front-end da aplicação, navegue até a pasta "Front_end", instale todas as dependências e então execute o comando para iniciar a aplicação.
 ```bash
 $ cd Front_end
 $ npm install
@@ -62,7 +63,7 @@ Para que a aplicação funcione o front end deve estar hospedado na porta 3000
     * PostgreSQL: [Instalação do PostgreSQL](https://www.postgresql.org/download/)
 
 - Configurar o arquivo application.properties
-    * No diretório Back_end\src\main\resources\application.properties, edite o arquivo application.properties para configurar a conexão com o banco de dados:
+    * No diretório Back_end\src\main\resources\application.properties, edite o arquivo application.properties para configurar a conexão com o banco de dados conforme abaixo:
 ```JAVA
 spring.application.name=Web_NF_POOJava
 spring.datasource.url=jdbc:postgresql://localhost/JavaNF
@@ -77,8 +78,8 @@ spring.jpa.format-sql=true
 ```
 
 #### Run Application
-- Para rodar o Back end da aplicação vá para o arquivo Back_end\src\main\java\com\Web_NF_POOJava\Web_NF_POOJava\WebNfPooJavaApplication.java e rode a aplicação.
-- É necessario que a porta 8080 esteja livre.
+- Para executar o Back end da aplicação vá para o arquivo Back_end\src\main\java\com\Web_NF_POOJava\Web_NF_POOJava\WebNfPooJavaApplication.java e rode a aplicação.
+- Certifique-se de que a porta 8080 esteja livre.
 
 ## Objetivos da Aplicação
 Esta aplicação tem como objetivo ajudar uma empresa de talent aquisition acompanhar a perfomace de seus funcionarios e centralizar o cadastro e armazenamento de informações de vagas e candidatos.
@@ -86,7 +87,7 @@ Esta aplicação tem como objetivo ajudar uma empresa de talent aquisition acomp
 ## Funções/Lista de Eventos (Funcionalidades)
 [x] Logar.
 [x] Criar e Armazenar user id nos cookies.
-[x] Demonstrar Informações de maneira coesa e consisa (Dashboard).
+[x] Demonstrar informações de maneira coesa e concisa (Dashboard)
 [x] Cadastrar Usuário.
 [x] Cadastrar Vaga.
 [x] Cadastrar Candidato.
@@ -458,17 +459,18 @@ Diálogos non-modais permitem que o usuário interaja com outras partes da pági
         - Cadastrar Usuário.
         - Cadastrar Vaga.
         - Cadastrar Candidato.
-    ![Toast Verde](img/producao/toast_verde_produção.PNG)
+![Toast Verde](img/producao/toast_verde_produção.PNG)
     - Azul: Quando um dado é editado do banco.
         - Editar Usuário.
         - Editar Vaga.
         - Editar Candidato.
-    ![Toast Azul](img/producao/toast_azul_produção.PNG)
+![Toast Azul](img/producao/toast_azul_produção.PNG)
+
     - Vermelho: Quando um dado é removido do banco.
         - Deletar Usuário.
         - Deletar Vaga.
         - Deletar Candidato.
-    ![Toast Vermelho](img/producao/toast_vermelha_produção.PNG)
+![Toast Vermelho](img/producao/toast_vermelha_produção.PNG)
 
 ### Layout Relatórios
 O relatório de minha aplicação esta sendo demonstrado através do dashboard que apresenta os seguintes dados:
@@ -481,5 +483,15 @@ O relatório de minha aplicação esta sendo demonstrado através do dashboard q
 ![Dashboard](img\producao\dashboard_producao.PNG)
 
 # Considerações Finais
+A conclusão deste projeto marca o desenvolvimento de uma aplicação web robusta e eficiente para a gestão de processos de Talent Acquisition, utilizando uma stack tecnológica moderna e amplamente adotada. A combinação de um front-end dinâmico com Next.js e um back-end poderoso com Java e Spring Boot resultou em uma solução que não apenas atende aos requisitos funcionais propostos, mas também garante um desempenho satisfatório, segurança adequada para o contexto local e uma interface intuitiva e amigável.
+
+Este projeto foi capaz de proporcionar vários aprendizados e aprimoramentos, dentre eles temos:
+
+- Desenvolvimento Full-Stack: A experiência de trabalhar com ambas as extremidades da aplicação, front-end e back-end, ampliou a compreensão das melhores práticas e padrões de design em desenvolvimento de software.
+- Configuração e Deploy de Aplicações: A configuração do ambiente de desenvolvimento, incluindo a instalação e configuração de PostgreSQL, JDK e Maven, bem como a gestão de dependências com npm e Spring Boot, consolidou o conhecimento em deploy de aplicações web.
+- Uso de Frameworks e Ferramentas Modernas: Utilizar frameworks como Next.js, Spring Boot, Tailwind CSS e ferramentas como Prettier e JJWT reforçou a importância de adotar tecnologias modernas e eficientes para facilitar o desenvolvimento e a manutenção de aplicações.
+- Gerenciamento de Projetos: A organização do projeto, incluindo o uso de boas práticas de documentação e versionamento no GitHub, foi essencial para manter a clareza e a coesão do código ao longo do desenvolvimento.
+
+Em resumo, a conclusão deste projeto não apenas cumpre os objetivos estabelecidos, mas também abre portas para futuras melhorias e expansões, consolidando uma base sólida para um sistema de gestão de Talent Acquisition eficiente e moderno.
 
 # [Endpoints Schemas](/SCHEMA.md)
